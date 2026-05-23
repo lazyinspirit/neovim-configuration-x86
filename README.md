@@ -168,12 +168,16 @@ Leader key: `<Space>`
 | `<Leader>gp` | Preview hunk |
 | `<Leader>gb` | Blame line |
 
-### File tree (nvim-tree)
+### File tree (neo-tree)
 
 | Key | Action |
 |---|---|
-| `<Leader>tt` | Toggle tree |
-| `<Leader>tf` | Reveal current file |
+| `<Leader>tt` | Toggle file tree |
+| `<Leader>tf` | Reveal current file in tree |
+| `<Leader>tg` | Toggle git status panel |
+| `<C-w>h` / `<C-w>l` | Move focus left / right between tree and editor |
+
+In-tree file operations: `a` create, `d` delete, `r` rename, `y` copy, `x` cut, `p` paste, `?` full keymap.
 
 ### LaTeX (VimTeX — `.tex` files only)
 
@@ -204,7 +208,9 @@ Leader key: `<Space>`
 | `nvim-treesitter/nvim-treesitter` | Syntax highlighting + indentation |
 | `navarasu/onedark.nvim` | Colorscheme (pure-black variant) |
 | `nvim-lualine/lualine.nvim` | Status line |
-| `nvim-tree/nvim-tree.lua` | File explorer |
+| `nvim-neo-tree/neo-tree.nvim` | File explorer with git status panel |
+| `nvim-tree/nvim-web-devicons` | File type icons (neo-tree dependency) |
+| `MunifTanjim/nui.nvim` | UI component library (neo-tree dependency) |
 | `nvim-telescope/telescope.nvim` | Fuzzy finder |
 | `lewis6991/gitsigns.nvim` | Git hunk signs + blame |
 | `saghen/blink.cmp` | Autocompletion |

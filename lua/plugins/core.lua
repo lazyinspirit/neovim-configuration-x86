@@ -2,16 +2,35 @@
 return {
   -- File Explorer
   {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFindFile", "NvimTreeOpen", "NvimTreeClose" },
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    cmd = "Neotree",
     keys = {
-      { "<leader>tt", "<cmd>NvimTreeToggle<cr>",   desc = "Toggle file tree" },
-      { "<leader>tf", "<cmd>NvimTreeFindFile<cr>", desc = "Focus tree on current file" },
+      { "<leader>tt", "<cmd>Neotree toggle<cr>",                desc = "Toggle file tree" },
+      { "<leader>tf", "<cmd>Neotree reveal<cr>",               desc = "Focus tree on current file" },
+      { "<leader>tg", "<cmd>Neotree git_status toggle<cr>",    desc = "Toggle git status panel" },
     },
     opts = {
-      view = { width = 30 },
-      renderer = { group_empty = true },
-      filters = { dotfiles = false },
+      close_if_last_window = true,
+      window = {
+        width = 30,
+        mappings = {
+          -- Prevent space from being swallowed inside the tree (it's our leader key)
+          ["<space>"] = "none",
+        },
+      },
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = false,
+        },
+        follow_current_file = { enabled = true },
+      },
     },
   },
 
