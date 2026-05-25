@@ -47,3 +47,22 @@ opt.updatetime = 250
 
 -- Don't pass messages to ins-completion-menu
 opt.shortmess:append("c")
+
+-- Git: add all → commit → push in one step
+vim.keymap.set("n", "<leader>ga", function()
+  vim.ui.input({ prompt = "Commit message: " }, function(msg)
+    if not msg or msg == "" then return end
+    local out = vim.fn.system(
+      string.format("git add -A && git commit -m %s && git push 2>&1", vim.fn.shellescape(msg))
+    )
+    vim.notify(out, vim.v.shell_error == 0 and vim.log.levels.INFO or vim.log.levels.ERROR)
+  end)
+end, { desc = "Git: add all, commit, push" })
+
+-- Left-click × in the winbar to close the focused split
+_G.WinbarClose = function()
+  if vim.fn.winnr("$") > 1 then
+    vim.cmd("close")
+  end
+end
+vim.o.winbar = "%=%@v:lua.WinbarClose@  ×  %X"

@@ -46,7 +46,8 @@ syntax highlighting.
 - **LaTeX workflow** — VimTeX + Zathura with SyncTeX forward/inverse search.
 - **Fuzzy finding** — Telescope for files, live grep, buffers, help, and recent
   files.
-- **Git integration** — Gitsigns for hunk navigation and inline blame.
+- **Git integration** — Gitsigns for hunk navigation and inline blame. `<Leader>ga` stages all changes, prompts for a commit message, and pushes in one step.
+- **Mouse window close** — a clickable `×` in every window's winbar closes that split with a left click (no-op on the last window).
 - **Soft wrap** — long lines wrap visually at the window edge (`wrap`,
   `linebreak`, `breakindent`); no newlines are inserted into the file.
 
@@ -167,6 +168,7 @@ Leader key: `<Space>`
 | `[c` | Previous hunk |
 | `<Leader>gp` | Preview hunk |
 | `<Leader>gb` | Blame line |
+| `<Leader>ga` | Stage all, commit (prompts for message), and push |
 
 ### File tree (neo-tree)
 
