@@ -50,11 +50,55 @@ return {
     },
   },
 
+  -- Scrollbar: position indicator + click-to-jump
+  {
+    "dstein64/nvim-scrollview",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      column = 1,
+      character = "▋",
+      excluded_filetypes = {
+        "neo-tree", "TelescopePrompt", "TelescopeResults",
+        "TelescopePreview", "lazy", "mason", "help", "qf",
+      },
+    },
+  },
+
   -- Status Line
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    opts = { options = { theme = "auto" } },
+    opts = {
+      options = { theme = "auto" },
+      sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_c = {
+          {
+            "filename",
+            path = 3,             -- absolute path
+            shorting_target = 40, -- start shortening only when bar is crowded
+          },
+        },
+        lualine_x = {
+          -- Which LSP servers are attached to this buffer
+          {
+            function()
+              local clients = vim.lsp.get_clients({ bufnr = 0 })
+              local names = vim.tbl_map(function(c) return c.name end, clients)
+              return "󰒍 " .. table.concat(names, ", ")
+            end,
+            cond = function()
+              return #vim.lsp.get_clients({ bufnr = 0 }) > 0
+            end,
+            color = { fg = "#98c379" },
+          },
+          "filetype",
+        },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+      },
+    },
   },
 
   -- Colorscheme: pure-black variant
@@ -69,6 +113,8 @@ return {
     config = function(_, opts)
       require("onedark").setup(opts)
       vim.cmd("colorscheme onedark")
+      vim.api.nvim_set_hl(0, "ScrollViewThumb", { bg = "#5c6370" })
+      vim.api.nvim_set_hl(0, "ScrollView",      { bg = "NONE" })
     end,
   },
 
