@@ -30,6 +30,17 @@ return {
           hide_gitignored = false,
         },
         follow_current_file = { enabled = true },
+        window = {
+          mappings = {
+            ["<cr>"] = function(state)
+              local node = state.tree:get_node()
+              if node and node.type == "directory" then
+                vim.cmd("cd " .. vim.fn.fnameescape(node.path))
+              end
+              require("neo-tree.sources.filesystem.commands").open(state)
+            end,
+          },
+        },
       },
     },
   },

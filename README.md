@@ -179,6 +179,8 @@ Leader key: `<Space>`
 | `<Leader>tg` | Toggle git status panel |
 | `<C-w>h` / `<C-w>l` | Move focus left / right between tree and editor |
 
+In-tree navigation: `<Enter>` on a directory expands/collapses it **and** changes the global CWD to that directory. `<Enter>` on a file opens it normally.
+
 In-tree file operations: `a` create, `d` delete, `r` rename, `y` copy, `x` cut, `p` paste, `?` full keymap.
 
 ### LaTeX (VimTeX — `.tex` files only)
