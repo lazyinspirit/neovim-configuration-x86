@@ -41,12 +41,22 @@ syntax highlighting.
   buffer/global toggle commands.
 - **Autocompletion** — `blink.cmp` with LSP, buffer, path, and snippet sources.
   VimTeX omnifunc wired in for LaTeX.
+- **Bracket / quote auto-pairing** — `nvim-autopairs` automatically closes
+  `()`, `[]`, `{}`, `""`, `''`, and ` `` ` in all languages. Treesitter-aware:
+  no pairing inside strings or comments.
+- **Line commenting** — `Comment.nvim` maps `gcc` to toggle the current line's
+  comment and `gc` in visual mode to toggle a selection. Uses the correct
+  comment syntax per filetype automatically.
 - **HTML tag auto-close/rename** — `nvim-ts-autotag` auto-inserts closing tags
   on `>` and keeps paired tags in sync when one is renamed.
 - **LaTeX workflow** — VimTeX + Zathura with SyncTeX forward/inverse search.
 - **Fuzzy finding** — Telescope for files, live grep, buffers, help, and recent
   files.
-- **Git integration** — Gitsigns for hunk navigation and inline blame. `<Leader>ga` stages all changes, prompts for a commit message, and pushes in one step.
+- **Keymap discovery** — `which-key.nvim` shows a popup of all `<Leader>`
+  keymaps when `<Space>` is held in normal mode.
+- **Git integration** — Gitsigns for hunk navigation and inline blame.
+  `<Leader>ga` stages all changes, prompts for a commit message, and pushes in
+  one step. `<Leader>gl` pulls from the remote.
 - **Mouse window close** — a clickable `×` in every window's winbar closes that split with a left click (no-op on the last window).
 - **Soft wrap** — long lines wrap visually at the window edge (`wrap`,
   `linebreak`, `breakindent`); no newlines are inserted into the file.
@@ -160,6 +170,14 @@ Leader key: `<Space>`
 | `<Leader>fh` | Help tags |
 | `<Leader>fr` | Recent files |
 
+### Commenting
+
+| Key | Action |
+|---|---|
+| `gcc` | Toggle comment on current line |
+| `gc` (visual) | Toggle comment on selection |
+| `gbc` | Toggle block comment on current line |
+
 ### Git (Gitsigns)
 
 | Key | Action |
@@ -169,6 +187,7 @@ Leader key: `<Space>`
 | `<Leader>gp` | Preview hunk |
 | `<Leader>gb` | Blame line |
 | `<Leader>ga` | Stage all, commit (prompts for message), and push |
+| `<Leader>gl` | Pull from remote |
 
 ### File tree (neo-tree)
 
@@ -221,4 +240,7 @@ In-tree file operations: `a` create, `d` delete, `r` rename, `y` copy, `x` cut, 
 | `stevearc/conform.nvim` | Format on save |
 | `williamboman/mason.nvim` | LSP / tool installer UI |
 | `windwp/nvim-ts-autotag` | HTML/JSX/TSX tag auto-close and paired rename |
+| `windwp/nvim-autopairs` | Bracket and quote auto-pairing for all languages |
+| `numToStr/Comment.nvim` | `gcc` / `gc` commenting with per-filetype syntax |
+| `folke/which-key.nvim` | Keymap popup on `<Space>` in normal mode |
 | `lervag/vimtex` | LaTeX editing, compilation, SyncTeX |

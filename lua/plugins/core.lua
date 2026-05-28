@@ -129,6 +129,23 @@ return {
     end,
   },
 
+  -- which-key: show all <leader> keymaps when <Space> is held in normal mode
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      local wk = require("which-key")
+      wk.setup({})
+      wk.add({
+        { "<leader>f", group = "find" },
+        { "<leader>g", group = "git" },
+        { "<leader>t", group = "tree" },
+        { "<leader>c", group = "claude" },
+        { "<leader>r", group = "lsp" },
+      })
+    end,
+  },
+
   -- Treesitter (MAIN branch API — full rewrite, requires Neovim 0.12+).
   -- LaTeX intentionally excluded: VimTeX handles tex highlighting.
   {

@@ -59,6 +59,12 @@ vim.keymap.set("n", "<leader>ga", function()
   end)
 end, { desc = "Git: add all, commit, push" })
 
+-- Git: pull in the current repo
+vim.keymap.set("n", "<leader>gl", function()
+  local result = vim.fn.system("git -C " .. vim.fn.expand("%:p:h") .. " pull 2>&1")
+  vim.notify(result, vim.v.shell_error == 0 and vim.log.levels.INFO or vim.log.levels.ERROR)
+end, { desc = "Git: pull" })
+
 -- Left-click × in the winbar to close the focused split
 _G.WinbarClose = function()
   if vim.fn.winnr("$") > 1 then

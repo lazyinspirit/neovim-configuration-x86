@@ -77,6 +77,24 @@ return {
     end,
   },
 
+  -- Bracket/quote auto-pairing for all languages
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup({ check_ts = true })
+    end,
+  },
+
+  -- gcc to toggle comment on current line; gc in visual mode
+  {
+    "numToStr/Comment.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("Comment").setup()
+    end,
+  },
+
   -- blink.cmp: Autocompletion
   {
     "saghen/blink.cmp",
