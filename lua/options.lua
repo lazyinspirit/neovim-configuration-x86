@@ -65,6 +65,14 @@ vim.keymap.set("n", "<leader>gl", function()
   vim.notify(result, vim.v.shell_error == 0 and vim.log.levels.INFO or vim.log.levels.ERROR)
 end, { desc = "Git: pull" })
 
+-- Custom navigation keybindings
+vim.keymap.set("n", "<M-l>", "w", { noremap = true, desc = "Next word" })
+vim.keymap.set("n", "<M-h>", "b", { noremap = true, desc = "Previous word" })
+vim.keymap.set("n", "<M-k>", "<C-u>", { noremap = true, desc = "Half page up" })
+vim.keymap.set("n", "<M-j>", "<C-d>", { noremap = true, desc = "Half page down" })
+vim.keymap.set("n", "<C-k>", "<C-b>", { noremap = true, desc = "Page up" })
+vim.keymap.set("n", "<C-j>", "<C-f>", { noremap = true, desc = "Page down" })
+
 -- Left-click × in the winbar to close the focused split
 _G.WinbarClose = function()
   if vim.fn.winnr("$") > 1 then

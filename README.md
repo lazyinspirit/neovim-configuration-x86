@@ -221,6 +221,17 @@ In-tree file operations: `a` create, `d` delete, `r` rename, `y` copy, `x` cut, 
 | `:FormatDisable!` | Disable format-on-save globally |
 | `:FormatEnable` | Re-enable format-on-save |
 
+### Custom navigation
+
+| Key | Action |
+|---|---|
+| `<Alt-l>` | Next word |
+| `<Alt-h>` | Previous word |
+| `<Alt-k>` | Half page up |
+| `<Alt-j>` | Half page down |
+| `<C-k>` | Page up |
+| `<C-j>` | Page down |
+
 ---
 
 ## Plugin inventory
